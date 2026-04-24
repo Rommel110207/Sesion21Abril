@@ -10,8 +10,7 @@ import java.util.List;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main()
-    {
+    static void main() {
         ProductoServicio productos = new ProductoServicio();
         /*Scanner teclado = new Scanner(System.in);
 
@@ -35,18 +34,15 @@ public class Main {
 
          System.out.println("Total pagar "+ cantidad*precio);*/
 
-        String menu= "Jaguar Coffee \n1. Agregar\n2. Ver\n3. Salir\n Opción ";
-        String nombre, precio, cantidad, opcion= "0";
+        String menu = "Jaguar Coffee \n1. Agregar\n2. Ver\n3. Buscar\n4. Salir\nOpcion ";
+        String nombre, precio, cantidad, opcion = "0";
 
         do {
-            try
-            {
+            try {
                 opcion = JOptionPane.showInputDialog(null, menu);
 
-                switch (opcion)
-                {
-                    case "1"->
-                    {
+                switch (opcion) {
+                    case "1" -> {
                         nombre = JOptionPane.showInputDialog(null, "Nombre del producto: ");
                         precio = JOptionPane.showInputDialog(null, "Precio del producto: ");
                         cantidad = JOptionPane.showInputDialog(null, "Cantidad del producto: ");
@@ -54,36 +50,43 @@ public class Main {
 
                     }
 
-                    case "2" ->
-                    {
+                    case "2" -> {
 
 
-                       JOptionPane.showMessageDialog(null, productos.getFactura());
+                        JOptionPane.showMessageDialog(null, productos.getFactura());
 
                     }
 
                     case "3" ->
                     {
-                        JOptionPane.showMessageDialog(null, "Gracias por su compra");
+                        //Buscar Productos por nombre usando la clase ProductoService
+
+                        Producto producto = new Producto();
+
+                        nombre = JOptionPane.showInputDialog(null, "Nombre del producto: ");
+                        precio = JOptionPane.showInputDialog(null, "Precio del producto: ");
+                        cantidad = JOptionPane.showInputDialog(null, "Cantidad del producto: ");
+                        boolean encontrado= productos.buscarProductos(  nombre, Integer.parseInt(cantidad), Double.parseDouble(precio));
+                        JOptionPane.showMessageDialog(null, "Producto encontrado");
+
+
+
                     }
 
-                    default ->
+                    case "4"->
                     {
-                        JOptionPane.showMessageDialog(null, "Opción no válida");
+                        JOptionPane.showMessageDialog(null, "Adios");
                     }
 
 
                 }
 
-            }
-            catch (Exception e)
+
+
+            }catch (Exception e)
             {
-                JOptionPane.showMessageDialog(null, menu);
+                JOptionPane.showMessageDialog(null, "Error en el opcion");
             }
-
-        }while(!opcion.equals("3"));
-
-
-
+        }while (!opcion.equals("4")) ;
     }
 }

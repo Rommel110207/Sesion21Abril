@@ -10,5 +10,18 @@ public interface ProductoInterface
 
 
     public List<Producto> obtenerProductos();
+    public boolean eliminarProductos(String nombre);
+
+    public boolean editarProductos(String nombre, double precio, int cantidad);
+
+    public boolean buscarProductos(String nombre, int cantidad, double precio);
+
+
+
+
+
+
+
+
 
 }
